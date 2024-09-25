@@ -11,7 +11,7 @@ python3.9 -m pip install -r packages.txt
 # Data download and simulation data
 The UKB EHR data must be downloaded from UK Biobank (https://www.ukbiobank.ac.uk/) by user's self
 
-The 5 fold simulation data used in the paper can be found at https://github.com/JiajunQiu/TransVarSur/tree/main/data/simulation
+The 5 fold simulation data used in the paper can be found at https://github.com/JiajunQiu/VaDeSCEHR/tree/main/data/simulation
 
 # Example test
 The following code can be used to re-produce the result on simulation for a single fold:
