@@ -208,13 +208,16 @@ def train(cluster_nums,trial,fold,exp_name,work_path,opt_typ,benchmark,save_mode
     print('#SBATCH -t 29-12:00',file=out)              
     print('#SBATCH -o '+temp_path+'/job_%A_%a.log',file=out)       
     print('#SBATCH -e '+temp_path+'/job_%A_%a.log',file=out)      
+    print('#SBATCH --exclude=inhccne0801',file=out)
+    print('source /home/qiujiaju/.bashrc',file=out) 
+    print('conda activate tf',file=out)
+    print('export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/qiujiaju/.local/lib/python3.9/site-packages/tensorrt',file=out)
+    print('export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/users/qiujiaju/conda/envs/tf/lib',file=out)
     
-    if benchmark=='True' and whole=='True':
-        print('python3.9 '+str(os.path.join(script_path,'scripts/run-optuna-all-benchmark.py'))+' -c '+str(cluster_nums) +' -l '+str(trial.number)+' -n '+str(exp_name)+' -p '+str(work_path)+' -t '+str(opt_typ),file=out)    
+    if whole=='True':
+        print('python3.9 '+str(os.path.join(script_path,'scripts/train-model.py'))+' -c '+str(cluster_nums) +' -l '+str(trial.number)+' -n '+str(exp_name)+' -p '+str(work_path)+' -t '+str(opt_typ),file=out)    
     elif benchmark=='True':
         print('python3.9 '+str(os.path.join(script_path,'scripts/run-optuna-fold-benchmark.py'))+' -c '+str(cluster_nums) +' -l '+str(trial.number)+' -f '+str(fold)+' -n '+str(exp_name)+' -p '+str(work_path)+' -t '+str(opt_typ)+' -s '+save_model,file=out)
-    elif whole=='True':
-        print('python3.9 '+str(os.path.join(script_path,'scripts/run-optuna-all.py'))+' -c '+str(cluster_nums) +' -l '+str(trial.number)+' -n '+str(exp_name)+' -p '+str(work_path)+' -t '+str(opt_typ),file=out)
     else:
         print('python3.9 '+str(os.path.join(script_path,'scripts/run-optuna-fold.py'))+' -c '+str(cluster_nums) +' -l '+str(trial.number)+' -f '+str(fold)+' -n '+str(exp_name)+' -p '+str(work_path)+' -t '+str(opt_typ)+' -s '+save_model,file=out)
     out.close()
@@ -255,7 +258,7 @@ def objective_cv(trial):
         if save_model=='True':
             epoch=params['epoch']
         else:
-            epoch = 1000
+            epoch = 500
         warmup_proportion = None
         
     configs['training']={}
@@ -423,5 +426,6 @@ if save_model=='True':
 else:
     study = optuna.create_study(direction=direction, study_name='train_num_cluster'+str(num_clusters), storage='sqlite:///'+work_path+'/train.db', load_if_exists=True,pruner=RepeatPruner())
     study.optimize(objective_cv, n_trials=1)
+
 
     
