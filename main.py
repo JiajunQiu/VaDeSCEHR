@@ -265,9 +265,6 @@ if scenario=='simulation':
     configs['work_path']=work_path
     configs['run_model']=run_model
     job_submit(str(os.path.join(script_path,'scripts/run-simulation.py')),configs)
-    print('Wait until the training of simulation model finished',flush=True)
-    for x in tqdm(range(1)):
-        wait_for_jobs(1)
 elif scenario=='use_case':
     configs={}
     configs['num_cluster']=num_cluster
