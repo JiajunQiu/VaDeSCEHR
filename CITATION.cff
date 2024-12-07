@@ -46,5 +46,5 @@ keywords:
   - Transformer
   - Real world evidence
   - language model
-license: AGPL-3.0
+license: AGPL-3.0-or-later
 version: v1.0.0
