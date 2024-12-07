@@ -1,7 +1,11 @@
 # VaDeSCEHR
 This repository contains code for a method for clustering longitudinal time-to-event data as extracted from electronic health records, published as a preprint on https://www.medrxiv.org/content/10.1101/2024.01.11.24301148v2
+        
+        
+        
+        
 
-Deep representation learning for clustering longitudinal survival data from electronic health records
+Deep representation learning for clustering longitudinal survival data from electronic health records.
 
 # Dependencies install
 All the dependencies are in packages.txt based on python3.9
