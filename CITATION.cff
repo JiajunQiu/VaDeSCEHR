@@ -1,0 +1,50 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: VaDeSCEHR
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Jiajun
+    family-names: Qiu
+    email: jiajunqiu@hotmail.com
+    name-particle: Jiajun
+    orcid: 'https://orcid.org/0000-0003-1790-8536'
+identifiers:
+  - type: url
+    value: 'https://github.com/JiajunQiu/VaDeSCEHR'
+repository-code: 'https://github.com/JiajunQiu/VaDeSCEHR'
+abstract: >-
+  Precision medicine requires accurate identification of
+  clinically relevant patient subgroups. Electronic health
+  records provide major opportunities for leveraging machine
+  learning approaches to uncover novel patient subgroups.
+  However, many existing approaches fail to adequately
+  capture complex interactions between diagnosis
+  trajectories and disease-relevant risk events, leading to
+  subgroups that can still display great heterogeneity in
+  event risk and underlying molecular mechanisms. To address
+  this challenge, we implemented VaDeSC-EHR, a
+  transformer-based variational autoencoder for clustering
+  longitudinal survival data as extracted from electronic
+  health records. We show that VaDeSC-EHR outperforms
+  baseline methods on both synthetic and real-world
+  benchmark datasets with known ground-truth cluster labels.
+  In an application to Crohn’s disease, VaDeSC-EHR
+  successfully identifies four distinct subgroups with
+  divergent diagnosis trajectories and risk profiles,
+  revealing clinically and genetically relevant factors in
+  Crohn's disease. Our results show that VaDeSC-EHR can be a
+  powerful tool for discovering novel patient subgroups in
+  the development of precision medicine approaches.
+keywords:
+  - Variational inference
+  - Deep learning
+  - Transformer
+  - Real world evidence
+  - language model
+license: AGPL-3.0
+version: v1.0.0
